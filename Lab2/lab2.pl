@@ -76,7 +76,7 @@ check_rule(_,[_,X,negnegel(RowNumber)], ValidProofs):- member([RowNumber,neg(neg
 check_rule(_,[_,neg(neg(X)),negnegint(RowNumber)], ValidProofs):- member([RowNumber,X,_], ValidProofs),!.
 
 % contel
-check_rule(_,[_,_, cont(RowNumber)], ValidProofs):- member([RowNumber, cont, _], ValidProofs),!.
+check_rule(_,[_,_, contel(RowNumber)], ValidProofs):- member([RowNumber, cont, _], ValidProofs),!.
 
 % MT
 check_rule(_,[_, neg(X), mt(Row1,Row2)], ValidProofs):- member([Row1, imp(X,Y),_], ValidProofs),
