@@ -10,14 +10,14 @@ verify(FileName):- see(FileName), % reads a file
 /*************** Valid Proof **************/
 % print yes if proof is valid
 valid_proof(Prems, Goal, Proof) :- 
-                check_proof(Proof, Prems,[]), check_goal(Goal, Proof),
-                write("Yes"),!.
+                check_proof(Proof, Prems,[]), check_goal(Goal, Proof),!,
+                write("Yes").
 
 % print no if proof is invalid
 valid_proof(Prems,Goal,Proof):- 
                 ((not(check_proof(Proof,Prems,[]))); (not(check_goal(Goal,Proof)))),!,
                 write("No"),
-                fail,!.
+                fail.
 
 /************** Proof checking *************/
 
