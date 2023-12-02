@@ -33,9 +33,8 @@ check_proof([Line|RestProof], Prems, ValidProofs) :-
 check_goal(Goal,[[_,LastRow,_]|[]]):- Goal = LastRow. 
 check_goal(Goal,[_|Tail]) :- check_goal(Goal,Tail). % finding the last row recursively
 
-/************** Box checking *************/
-check_rule(Prems,[[RowNumber, X, assumption]|Box], ValidProofs):- 
-                check_proof(Box, Prems, [[RowNumber, X, assumption]|ValidProofs]).
+
+
 
 /************** Rule checking *************/
 
@@ -96,6 +95,10 @@ check_rule(_,[_, neg(X), mt(Row1,Row2)], ValidProofs):-
 
 % LEM (it is valid without any conditions)
 check_rule(_,[_,or(X,neg(X)), lem], _).
+
+/************** Box checking *************/
+check_rule(Prems,[[RowNumber, X, assumption]|Box], ValidProofs):- 
+                check_proof(Box, Prems, [[RowNumber, X, assumption]|ValidProofs]).
 
 % orel (box)
 check_rule(_,[_,Z,orel(Row1,Row2,Row3,Row4,Row5)], ValidProofs):-
